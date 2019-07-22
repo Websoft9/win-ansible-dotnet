@@ -27,11 +27,6 @@
     src: C:\temp\mysql.zip
     dest: C:\websoft9\
 
-- name: Create mysql/data directory
-  win_file:
-    path: C:\websoft9\mysql\data
-    state: directory
-
 - name: Read mysql version
   win_shell:
     dir /b C:\websoft9\
@@ -41,6 +36,11 @@
 
 - name: rename directory name
   win_shell: ren C:\websoft9\{{mysql_ver.stdout_lines[0]}} mysql
+
+- name: Create mysql/data directory
+  win_file:
+    path: C:\websoft9\mysql\data
+    state: directory
 
 - name: copy mysql configration file
   win_template:

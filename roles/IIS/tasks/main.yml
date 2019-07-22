@@ -12,6 +12,10 @@
     dest: C:\Users\Public\Desktop\Internet Information Services (IIS) Manager.lnk
     directory: C:\windows\system32\inetsrv\
 
+- name: Reboot Machine
+  win_reboot:
+    reboot_timeout: 3600
+
 - include: 9panel.yml
 
 - name: Add 9panel webapplication on IIS.

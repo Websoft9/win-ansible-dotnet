@@ -13,4 +13,4 @@
     - { role: dotnet, tags: "dotnet" }
     - { role: mysql, tags: "mysql" }
     - { role: IIS, tags: "IIS" }
-    - { role: sysprep, tags: "sysprep"}
+    # - { role: sysprep, tags: "sysprep"}
