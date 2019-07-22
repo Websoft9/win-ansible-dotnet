@@ -47,12 +47,14 @@
 ```pip install paramiko PyYAML Jinja2 httplib2 six```
 
 hosts 文件示例：
-> [windows-server]
-  40.121.53.104
+> [windows-server]  
+  40.121.53.104  
+> [windows-server:vars]  
+  ansible_ssh_user="admin"  
+  ansible_ssh_pass="123456"  
+  ansible_ssh_port=5985  
+  ansible_connection="winrm"  
+  ansible_winrm_server_cert_validation=ignore  
 
-  [windows-server:vars]
-  ansible_ssh_user="admin"
-  ansible_ssh_pass="123456"
-  ansible_ssh_port=5985
-  ansible_connection="winrm"
-  ansible_winrm_server_cert_validation=ignore
+
+9panel 的 main.yml 通过 include 嵌入 IIS 的 role 里面，role里面的9panel误删，可用于其他 IIS 镜像。
