@@ -1,16 +1,21 @@
 ---
-- name: wampserver
+- name: dotnet
   hosts: all
-  become: yes
-  become_user: websoft9
-  become_method: runas
 
-  vars:
-    ansible_become_password: Qwerty123456
+  vars_files:
+    - vars/main.yml
+    
+  pre_tasks:
+    - debug:
+        msg: Dotnet will be installed on {{ansible_distribution}} }
+    
 
   roles:
-    - { role: common, tags: "common" }
+    - { role: role_common, tags: "role_common" }
+    - { role: role_cloud, tags: "role_cloud" }
+    - { role: role_tools, tags: "role_tools", vars: {tools_dbforge_install: True} }
+    - { role: role_iis, tags: "role_iis" }
+    - { role: role_mysql, tags: "role_mysql" }
     - { role: dotnet, tags: "dotnet" }
-    - { role: mysql, tags: "mysql" }
-    - { role: IIS, tags: "IIS" }
-    # - { role: sysprep, tags: "sysprep"}
+    # - { role: role_preend, tags: "role_preend" }
+    # - { role: role_end, tags: "role_end" }
